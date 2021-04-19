@@ -6,15 +6,10 @@ public class Player_Controller : MonoBehaviour
 {
     public float playerSpeed = 10f;
     public float hInput;
+    public float vInput;
     public float movex = 58;
-
-    public float movey = 1;
+    public float movey = 2;
     private Rigidbody rigidB;
-
-
-
-   
-
 
     // Start is called before the first frame update
     void Start()
@@ -26,9 +21,13 @@ public class Player_Controller : MonoBehaviour
     void Update()
     {
         hInput = Input.GetAxis("Horizontal");
+        vInput = Input.GetAxis("Vertical");
 
-        // Controls player movement foward and backward. Meaning left and right across the screen.
+        // Controls player movement foward and backward. Meaning left and right across the screen. 
        transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed * hInput);
+
+        //Controlls left and right motion
+       transform.Translate(Vector3.up * Time.deltaTime * playerSpeed * vInput);
 
 
         //Creates player boundry so that the player can only move to the right.
