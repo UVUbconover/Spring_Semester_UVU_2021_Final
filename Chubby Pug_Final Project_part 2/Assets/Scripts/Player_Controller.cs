@@ -26,10 +26,6 @@ public class Player_Controller : MonoBehaviour
         // Controls player movement foward and backward. Meaning left and right across the screen. 
        transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed * hInput);
 
-        //Controlls left and right motion
-       transform.Translate(Vector3.up * Time.deltaTime * playerSpeed * vInput);
-
-
         //Creates player boundry so that the player can only move to the right.
         if (transform.position.x > movex)
         {
@@ -43,6 +39,7 @@ public class Player_Controller : MonoBehaviour
         }
 
     }
+
 
 }
 

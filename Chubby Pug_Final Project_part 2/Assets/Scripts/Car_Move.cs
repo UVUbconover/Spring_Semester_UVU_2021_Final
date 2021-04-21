@@ -18,4 +18,13 @@ public class Car_Move : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * carSpeed);
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+            Debug.Log("Crash");
+        }
+
+    }
 }
