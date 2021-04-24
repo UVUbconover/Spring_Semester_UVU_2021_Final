@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameManagerX : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timerText;
     public TextMeshProUGUI gameOverText;
     public GameObject titleScreen;
     public Button restartButton; 
@@ -21,17 +22,33 @@ public class GameManagerX : MonoBehaviour
     private float spaceBetweenSquares = 2.5f; 
     private float minValueX = -3.75f; //  x value of the center of the left-most square
     private float minValueY = -3.75f; //  y value of the center of the bottom-most square
-    
-    // Start the game, remove title screen, reset score, and adjust spawnRate based on difficulty button clicked
-    public void StartGame()
+    private int timeLeft;
+
+    private void Update()
     {
-        spawnRate /= 5;
+        if (isGameActive)
+        {
+            timeLeft -= Time.deltaTime;
+            timerText.SetText("Time: " + Mathf.Round(timeLeft));
+            if (timeLeft < 0)
+            {
+                GameOver();
+            }
+        }
+    }
+
+    // Start the game, remove title screen, reset score, and adjust spawnRate based on difficulty button clicked
+    public void StartGame(int difficulty)
+    {
+        spawnRate /= difficulty;
         isGameActive = true;
+        timeLeft = 60;
         StartCoroutine(SpawnTarget());
         score = 0;
         UpdateScore(0);
         titleScreen.SetActive(false);
     }
+
 
     // While game is active spawn a random target
     IEnumerator SpawnTarget()
@@ -70,14 +87,14 @@ public class GameManagerX : MonoBehaviour
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
-        scoreText.text = "score";
+        scoreText.text = "Score: " + score;
     }
 
     // Stop game, bring up game over text and restart button
     public void GameOver()
     {
         gameOverText.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(true);
         isGameActive = false;
     }
 
