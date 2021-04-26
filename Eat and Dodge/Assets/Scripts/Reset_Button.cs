@@ -8,20 +8,10 @@ using UnityEngine.UI;
 public class Reset_Button : MonoBehaviour
 {
 
-    // Start is called before the first frame update
-    void Start()
-    {
-   
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void OnMouseDown()
     {
+        //Gets my cavas object from the sample scene and deactivates it when the mouse clicks the button allowing the player to continue playing.
         UnityEngine.GameObject[] gameObjects = SceneManager.GetSceneByName("SampleScene").GetRootGameObjects();
         Canvas canvas = (Canvas)gameObjects[7].GetComponent("Canvas");
         canvas.enabled = false;

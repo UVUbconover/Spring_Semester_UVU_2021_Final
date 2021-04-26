@@ -9,11 +9,7 @@ public class Player_Controller : MonoBehaviour
     public float playerSpeed = 16f;
     public float xLimit = 10.68f, yLimit = 1f, zLimit = 4f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()

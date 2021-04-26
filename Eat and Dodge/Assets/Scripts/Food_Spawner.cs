@@ -16,11 +16,7 @@ public class Food_Spawner : MonoBehaviour
        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 
     public void SpawnFood()
     {

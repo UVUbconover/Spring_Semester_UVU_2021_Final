@@ -11,17 +11,7 @@ public class Obstacle_GameOver : MonoBehaviour
     public Button resetButton;
     public bool isGameActive = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
- 
-    }
+   
     
     public void OnTriggerEnter(Collider other)
     {
@@ -30,6 +20,7 @@ public class Obstacle_GameOver : MonoBehaviour
 
         isGameActive = false;
 
+        //Gets my Canvas object from the sample scene and activates it when the game is over.
         UnityEngine.GameObject[] gameObjects = SceneManager.GetSceneByName("SampleScene").GetRootGameObjects();
         Canvas canvas = (Canvas) gameObjects[7].GetComponent("Canvas");
         canvas.enabled = true;
