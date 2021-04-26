@@ -7,26 +7,45 @@ using UnityEngine.UI;
 
 public class Obstacle_GameOver : MonoBehaviour
 {
-    public GameObject gameOver;
+    public TextMeshProUGUI gameOverText;
+    public Button resetButton;
+    public bool isGameActive = true;
 
-   // Start is called before the first frame update
-   void Start()
-   {
-        GetComponent<GameObject>().CompareTag("GameOver");
-   }
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
 
     // Update is called once per frame
     void Update()
     {
-        
+ 
     }
     
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         //Destroy the food the dog(the trigger) collides with.
         Debug.Log("You Died");
+
+        isGameActive = false;
+
+        UnityEngine.GameObject[] gameObjects = SceneManager.GetSceneByName("SampleScene").GetRootGameObjects();
+        Canvas canvas = (Canvas) gameObjects[7].GetComponent("Canvas");
+        canvas.enabled = true;
+
         Destroy(gameObject);
-        gameOver.SetActive(true); 
+    }
+
+    public void GameOver()
+    {
+        //gameOverText.gameObject.SetActive(false);
+        //resetButton.gameObject.SetActive(false);
+    }
+
+    public void RestGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }

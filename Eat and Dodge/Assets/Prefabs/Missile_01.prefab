@@ -118,4 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca597f48f680ddb4cb43cc48c280d686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOver: {fileID: 0}
+  gameOverText: {fileID: 0}
+  resetButton: {fileID: 0}
+  isGameActive: 0
